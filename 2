@@ -1,0 +1,13 @@
+mport pandas as pd
+
+dataset = {'Box':['Box1','Box1','Box1','Box2','Box2','Box2',],'Dimension':['Length','Width','Height','Length','Width','Height'],
+
+           'Value':[6,4,2,5,3,4]}
+
+
+
+messydata = pd.DataFrame(dataset,columns=['Box','Dimension','Value'])
+
+tidydata = pd.pivot_table(messydata,index='Box',columns='Dimension',values='Value').reset_index()
+
+tidydata['Volume']=tidydata.Length*tidydata.Width*tidydata.Height
